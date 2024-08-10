@@ -13,11 +13,11 @@ import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { LoginDto, RegisterDto } from './dto/user.dto';
 
 @ApiTags('Auth API')
-@Controller('auth')
+@Controller('api/auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
   @UseGuards(LocalAuthGuard)
-  @ApiOperation({ summary: 'User login' })
+  @ApiOperation({ summary: '유저 로그인, JWT 발급' })
   @ApiBody({ type: LoginDto })
   @Post('login')
   async login(@Request() req) {
@@ -25,11 +25,13 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: '로그인된 유저인지 확인' })
   @Get('protected')
   protected(@Request() req) {
     return req.user;
   }
 
+  @ApiOperation({ summary: '유저 회원 가입' })
   @Post('register')
   @ApiResponse({
     status: 201,
