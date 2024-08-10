@@ -10,6 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   const config = new DocumentBuilder()
     .setTitle('solver')
+    .addBearerAuth()
     .setDescription(
       'Solver는 시민들의 적극적인 민원 참여를 목적으로 만들어진 서비스입니다.',
     )

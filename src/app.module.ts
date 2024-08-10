@@ -8,6 +8,7 @@ import { UserEntity } from './user/Entity/user.entity';
 import { ReportService } from './report/report.service';
 import { ReportController } from './report/report.controller';
 import { ReportModule } from './report/report.module';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ReportModule } from './report/report.module';
     UserModule,
     AuthModule,
     ReportModule,
+    ImageModule,
   ],
   controllers: [AppController, ReportController],
   providers: [ReportService],
